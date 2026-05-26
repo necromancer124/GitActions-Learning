@@ -1,19 +1,26 @@
 name: C Tests
 
-on: [push]
+on:
+  push:
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
+    - name: Checkout repository
+      uses: actions/checkout@v4
 
-    - name: Install GCC
-      run: sudo apt-get install -y gcc
+    - name: Show project files (debug)
+      run: ls -R
+
+    - name: Install build tools
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y gcc
 
     - name: Build tests
-      run: gcc test_math.c ../src/math.c -o test_math
+      run: gcc tests/test_math.c src/math.c -o test_math
 
     - name: Run tests
       run: ./test_math
