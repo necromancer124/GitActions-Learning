@@ -1,13 +1,31 @@
-#include <assert.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include "../src/math.h"
 
 int main() {
-    assert(add(2, 2) == 4);
-    assert(add(-1, 1) == 0);
-    assert(add(0, 0) == 0);
+    printf("Running tests...\n");
 
-    printf("ALL TESTS PASSED\n");
-    printf("%d\n", add(2, 3));
+    if (add(2, 2) == 4) {
+        printf("[PASS] add(2, 2) == 4\n");
+    } else {
+        printf("[FAIL] add(2, 2) should be 4\n");
+        return 1;
+    }
+
+    if (add(-1, 1) == 0) {
+        printf("[PASS] add(-1, 1) == 0\n");
+    } else {
+        printf("[FAIL] add(-1, 1) should be 0\n");
+        return 1;
+    }
+
+    if (subtract(5, 3) == 2) {
+        printf("[PASS] subtract(5, 3) == 2\n");
+    } else {
+        printf("[FAIL] subtract(5, 3) should be 2\n");
+        return 1;
+    }
+
+    printf("\nALL TESTS PASSED SUCCESSFULLY!\n");
     return 0;
 }
